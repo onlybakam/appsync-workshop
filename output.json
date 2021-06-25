@@ -1,0 +1,8 @@
+{
+  "AppsyncWorkshopStack": {
+    "STACKREGION": "us-east-2",
+    "GraphQLAPIID": "s463rgjoh5a47iznajulp57xvi",
+    "GraphQLAPIURL": "https://nn24ans4dvdebgny7gzps6avxy.appsync-api.us-east-2.amazonaws.com/graphql",
+    "GraphQLAPIKEY": "da2-66xsn2unbnduzhemwm6dxw4qhu"
+  }
+}
