@@ -1,0 +1,13 @@
+#set( $isOwnerAuthorized = false )
+#set( $allowedOwner = $ctx.args.owner )
+#set( $identityValue = $util.defaultIfNull($ctx.identity.claims.get("username"),
+$ctx.identity.claims.get("cognito:username")) )
+#if( $allowedOwner == $identityValue )
+    #set( $isOwnerAuthorized = true )
+#end
+
+#if( !($isOwnerAuthorized == true) )
+    $util.unauthorized()
+#end
+
+$util.toJson(null)
