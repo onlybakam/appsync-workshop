@@ -4,14 +4,14 @@ input CreateDataPointInput {
   value: Int
 }
 
-type DataPoint {
+type DataPoint @aws_api_key @aws_cognito_user_pools {
   name: ID!
   owner: String!
   createdAt: AWSDateTime!
   value: Int
 }
 
-type DataPointConnection {
+type DataPointConnection @aws_api_key @aws_cognito_user_pools {
   items: [DataPoint]
   nextToken: String
 }
@@ -45,10 +45,13 @@ type Mutation {
 type Query {
   getDataPoint(name: ID!, createdAt: AWSDateTime!): DataPoint
   listDataPoints(
-    filter: TableDataPointFilterInput
+    owner: String!
+    name: ID!
+    createdAt: ModelStringKeyConditionInput
+    sortDirection: ModelSortDirection
     limit: Int
     nextToken: String
-  ): DataPointConnection
+  ): DataPointConnection @aws_api_key
   queryDataPointsByNameAndDateTime(
     name: ID!
     createdAt: ModelStringKeyConditionInput
